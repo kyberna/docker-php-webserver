@@ -2,7 +2,7 @@ FROM php:7.1-apache
 MAINTAINER KYBERNA AG <info@kyberna.com>
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
-    libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libxml2 libxml2-dev libicu-dev \
+    libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxml2 libxml2-dev libicu-dev \
     wget mysql-client unzip git postfix cron vim inetutils-syslogd libxrender1 libfontconfig1 \
     libapache2-mod-rpaf logrotate
 
