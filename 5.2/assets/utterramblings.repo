@@ -1,6 +1,0 @@
-[utterramblings]
-name=Jason's Utter Ramblings Repo
-baseurl=http://yum.jasonlitka.com/EL$releasever/$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=http://yum.jasonlitka.com/RPM-GPG-KEY-jlitka
