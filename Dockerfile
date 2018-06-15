@@ -1,5 +1,5 @@
 FROM php:7.1-apache
-MAINTAINER KYBERNA AG <info@kyberna.com>
+LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
     libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxml2 libxml2-dev libicu-dev \
@@ -12,6 +12,7 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 RUN pecl install apcu
 RUN pecl install apcu_bc-1.0.3
+RUN pecl install xdebug
 RUN docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
 RUN docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
