@@ -8,3 +8,4 @@ It is based on the official PHP docker image and is customized to the needs for 
 * 5.3: PHP 5.3
 * 5.6: PHP 5.6
 * 7.1: PHP 7.1
+* 7.2: PHP 7.2
