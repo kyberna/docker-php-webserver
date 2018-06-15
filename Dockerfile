@@ -1,14 +1,16 @@
 FROM php:5.6-apache
-MAINTAINER KYBERNA AG <info@kyberna.com>
+LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
-    libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libxml2 libxml2-dev libicu-dev \
+    libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxml2 libxml2-dev libicu-dev \
     wget mysql-client unzip git postfix cron vim pdftk inetutils-syslogd libxrender1 libfontconfig1 \
     libapache2-mod-rpaf logrotate
 
 RUN docker-php-ext-install -j$(nproc) iconv intl mcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
+
+RUN pecl install xdebug-2.5.5
 
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD logrotate-apache2 /etc/logrotate.d/apache2
