@@ -13,7 +13,7 @@ if [ ! -f /firstrundone ]; then
     echo "done" >> /firstrundone
 fi
 
-if [ "$START_CRON" != "" ]; then
+if $START_CRON; then
     service cron start
 
     if [ "$CRON_FILE" != "" ]; then
@@ -21,9 +21,15 @@ if [ "$START_CRON" != "" ]; then
     fi
 fi
 
-if [ "$START_MAILDELIVERY" != "" ]; then
+if $START_MAILDELIVERY; then
     service inetutils-syslogd start
     service postfix start
+fi
+
+if $START_XDEBUG; then
+    docker-php-ext-enable xdebug
+else
+    rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 fi
 
 apache2-foreground
