@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER KYBERNA AG <info@kyberna.com>
+LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 
 VOLUME ["/var/www"]
 
