@@ -1,5 +1,5 @@
 FROM jordiprats/centos5:5.11
-MAINTAINER KYBERNA AG <info@kyberna.com>
+LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 
 COPY assets/init.sh /init.sh
 COPY assets/utterramblings.repo /etc/yum.repos.d/utterramblings.repo
@@ -18,6 +18,10 @@ RUN rpm --import http://yum.jasonlitka.com/RPM-GPG-KEY-jlitka && \
     mkdir /etc/httpd/vhost.d && \
     echo "Include vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf && \
     chmod +x /init.sh
+
+RUN pecl channel-update pecl.php.net && \
+    yum install -y php-devel gcc gcc-c++ autoconf automake make xmlsec1 xmlsec1-openssl && \
+    pecl install xdebug-2.2.7
 
 WORKDIR /var/www/html
 
