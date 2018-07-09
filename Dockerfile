@@ -4,7 +4,7 @@ LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
     libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxml2 libxml2-dev libicu-dev \
     wget mysql-client unzip git postfix cron vim pdftk inetutils-syslogd libxrender1 libfontconfig1 \
-    libapache2-mod-rpaf logrotate
+    libapache2-mod-rpaf logrotate xmlsec1
 
 RUN docker-php-ext-install -j$(nproc) iconv intl mcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
