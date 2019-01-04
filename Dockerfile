@@ -23,6 +23,9 @@ RUN pecl channel-update pecl.php.net && \
     yum install -y php-devel gcc gcc-c++ autoconf automake make xmlsec1 xmlsec1-openssl && \
     pecl install xdebug-2.2.7
 
+RUN ln -s /usr/lib64/libxmlsec1-openssl.so.1 /usr/lib64/libxmlsec1-openssl.so
+RUN ln -s /usr/lib/libxmlsec1-openssl.so.1 /usr/lib/libxmlsec1-openssl.so
+
 WORKDIR /var/www/html
 
 EXPOSE 80 443
