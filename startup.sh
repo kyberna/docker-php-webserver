@@ -26,7 +26,7 @@ if [ "$START_MAILDELIVERY" != "" ]; then
     service postfix start
 fi
 
-if $START_XDEBUG; then
+if [ "$START_XDEBUG" != "" ]; then
     docker-php-ext-enable xdebug
 else
     rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
