@@ -19,8 +19,7 @@ RUN docker-php-ext-enable imagick
 
 RUN pecl install apcu
 RUN pecl install apcu_bc
-# Temporarily disabled, makes problem at
-# RUN pecl install xdebug
+RUN pecl install xdebug
 RUN docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
 RUN docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
