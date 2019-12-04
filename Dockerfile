@@ -4,7 +4,7 @@ LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
     libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxml2 libxml2-dev libicu-dev \
     wget default-mysql-client unzip git postfix cron vim inetutils-syslogd libxrender1 libfontconfig1 \
-    libapache2-mod-rpaf logrotate nano curl libmagickwand-dev libmagickcore-dev libzip-dev zip
+    libapache2-mod-rpaf logrotate nano curl libmagickwand-dev libmagickcore-dev libzip-dev zip rsync
 
 RUN docker-php-ext-install -j$(nproc) intl opcache pdo_mysql mysqli soap
 
