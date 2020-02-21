@@ -6,13 +6,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     wget default-mysql-client unzip git postfix cron vim inetutils-syslogd libxrender1 libfontconfig1 \
     libapache2-mod-rpaf logrotate nano curl libmagickwand-dev libmagickcore-dev libzip-dev zip rsync
 
-RUN docker-php-ext-install -j$(nproc) intl opcache pdo_mysql mysqli soap
-
-RUN docker-php-ext-configure zip --with-libzip
-RUN docker-php-ext-install -j$(nproc) zip
-
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-install -j$(nproc) intl opcache pdo_mysql mysqli soap zip gd
 
 RUN pecl install imagick
 RUN docker-php-ext-enable imagick
