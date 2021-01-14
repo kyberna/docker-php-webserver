@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.0-apache
 LABEL maintainer="KYBERNA AG <info@kyberna.com>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
@@ -8,14 +8,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 
 RUN docker-php-ext-install -j$(nproc) intl opcache pdo_mysql mysqli soap zip gd
 
-RUN pecl install imagick
-RUN docker-php-ext-enable imagick
+# RUN pecl install imagick
+# RUN docker-php-ext-enable imagick
 
-RUN pecl install apcu
-RUN pecl install apcu_bc
+# RUN pecl install apcu
+# RUN pecl install apcu_bc
 RUN pecl install xdebug
-RUN docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
-RUN docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
+# RUN docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
+# RUN docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD logrotate-apache2 /etc/logrotate.d/apache2
